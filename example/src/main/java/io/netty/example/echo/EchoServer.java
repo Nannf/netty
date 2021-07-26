@@ -55,6 +55,8 @@ public final class EchoServer {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
+                    // [Nannf]: ServerSocketChannel 是管理连接用的
+                    // [Nannf]: 我们还需要一个用来传输数据的SocketChannel 这个找不到初始话的地方
              .channel(NioServerSocketChannel.class)
              .option(ChannelOption.SO_BACKLOG, 100)
              .handler(new LoggingHandler(LogLevel.INFO))

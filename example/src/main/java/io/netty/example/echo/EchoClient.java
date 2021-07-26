@@ -56,6 +56,7 @@ public final class EchoClient {
         try {
             Bootstrap b = new Bootstrap();
             b.group(group)
+                    // [Nannf] : 原来传数据的Socket在这
              .channel(NioSocketChannel.class)
              .option(ChannelOption.TCP_NODELAY, true)
              .handler(new ChannelInitializer<SocketChannel>() {
