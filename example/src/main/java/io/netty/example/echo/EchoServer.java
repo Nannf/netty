@@ -49,6 +49,7 @@ public final class EchoServer {
         }
 
         // Configure the server.
+        // [Nannf] :Selector 是在这边注册的吗
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         final EchoServerHandler serverHandler = new EchoServerHandler();

@@ -307,6 +307,7 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B, C>, C ext
     final ChannelFuture initAndRegister() {
         Channel channel = null;
         try {
+            // [Nannf] : 初始化SocketChannel
             channel = channelFactory.newChannel();
             init(channel);
         } catch (Throwable t) {
