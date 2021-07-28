@@ -282,6 +282,7 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B, C>, C ext
             return promise;
         } else {
             // Registration future is almost always fulfilled already, but just in case it's not.
+            // [Nannf] :初始化走的是这个分支
             final PendingRegistrationPromise promise = new PendingRegistrationPromise(channel);
             regFuture.addListener(new ChannelFutureListener() {
                 @Override
@@ -307,7 +308,7 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B, C>, C ext
     final ChannelFuture initAndRegister() {
         Channel channel = null;
         try {
-            // [Nannf] : 初始化SocketChannel
+            // [Nannf] : 初始化ServerSocketChannel
             channel = channelFactory.newChannel();
             init(channel);
         } catch (Throwable t) {

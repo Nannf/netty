@@ -102,6 +102,7 @@ public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandl
                 ctx.fireChannelRead(msg);
             }
         } finally {
+            // [Nannf] : 这边帮我们自动释放ByteBuf, 我们在实现InboundHandler的时候，会选择继承这个类
             if (autoRelease && release) {
                 ReferenceCountUtil.release(msg);
             }

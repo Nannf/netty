@@ -80,5 +80,11 @@ SelectionKey key = channel.register(selector,SelectionKey.OP_READ);
 
 
 
+#### 总结
+
+- Buffer - 所有的数据都经由它
+- channel - 管道 有监控连接的ServerSocketChannel 有传送数据的SocketChannel,首先得开启ServerSocketChannel,然后监听连接请求，注册感兴趣的事件，此时需要用SocketChannel来传送数据
+- Selector - 这个的出现是高并发的关键，准确的说是和非阻塞io同时出现，阻塞io的问题是读写都会阻塞，连接数高的时候，很多的连接都卡在了io上，所以非阻塞io应运而生。读写数据都要经由channel，当然FileChannel也有阻塞模式的，就网络连接而言，都是非阻塞的，此时管理多连接的io模型，Reactor应运而生。
+
 
 

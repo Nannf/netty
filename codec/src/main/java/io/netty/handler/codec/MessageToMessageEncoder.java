@@ -81,6 +81,9 @@ public abstract class MessageToMessageEncoder<I> extends ChannelOutboundHandlerA
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
         CodecOutputList out = null;
         try {
+            // [Nannf] : 我们可以新增的这个转换器，会有一个泛型参数
+            // [Nannf] : 只有write的msg的类型和声明时的泛型参数一致时才会进行处理
+            // [Nannf] : 否则什么都不做
             if (acceptOutboundMessage(msg)) {
                 out = CodecOutputList.newInstance();
                 @SuppressWarnings("unchecked")
