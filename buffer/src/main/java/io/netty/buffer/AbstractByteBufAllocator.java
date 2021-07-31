@@ -39,6 +39,7 @@ public abstract class AbstractByteBufAllocator implements ByteBufAllocator {
     protected static ByteBuf toLeakAwareBuffer(ByteBuf buf) {
         ResourceLeakTracker<ByteBuf> leak;
         switch (ResourceLeakDetector.getLevel()) {
+            // [Nannf] : 判断级别
             case SIMPLE:
                 leak = AbstractByteBuf.leakDetector.track(buf);
                 if (leak != null) {

@@ -242,6 +242,7 @@ public class ResourceLeakDetector<T> {
      */
     @SuppressWarnings("unchecked")
     public final ResourceLeakTracker<T> track(T obj) {
+        // [Nannf] : 内存泄漏的分析的地方
         return track0(obj);
     }
 

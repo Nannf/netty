@@ -398,7 +398,7 @@ public class PooledByteBufAllocator extends AbstractByteBufAllocator implements 
                     UnsafeByteBufUtil.newUnsafeDirectByteBuf(this, initialCapacity, maxCapacity) :
                     new UnpooledDirectByteBuf(this, initialCapacity, maxCapacity);
         }
-
+        // [Nannf] : 在分配 池化内存时需要把这个bytebuf加上弱引用
         return toLeakAwareBuffer(buf);
     }
 
