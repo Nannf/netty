@@ -134,6 +134,7 @@ public abstract class MultithreadEventExecutorGroup extends AbstractEventExecuto
 
     @Override
     public EventExecutor next() {
+        // [Nannf] : 在使用多线程的时候，如果使用NioEventLoopGroup作为默认的线程池，这边其实只会返回线程池中的一个线程
         return chooser.next();
     }
 
